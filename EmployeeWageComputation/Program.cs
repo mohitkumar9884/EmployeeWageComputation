@@ -8,14 +8,16 @@
             const int PART_TIME = 2;
             const int RATE_PER_HOUR = 20;
             const int WORKING_DAYS = 20;
+            const int MAX_WORKING_HRS = 80;
             int empHr = 0;
             int empWage = 0;
             int totalWage= 0;
             int day = 1;
+            int totalWorkingHrs= 0;
 
             Console.WriteLine("Welcome To EmployeeWageComputation");
             Random random = new Random();
-            for (day = 1; day <= WORKING_DAYS; day++)
+            while (day <= WORKING_DAYS && totalWorkingHrs<= MAX_WORKING_HRS)
             {
                 int employeeInput = random.Next(0, 3);// 0 or 1 or 2
                 //Console.WriteLine("Random value:{0}", employeeInput);
@@ -39,8 +41,12 @@
                 empWage = empHr * RATE_PER_HOUR;
                 totalWage = totalWage + empWage;
                 Console.WriteLine("Day{0} Employee WAGE Is:{1}", day, empWage);
+                day++;
+                totalWorkingHrs = totalWorkingHrs + empHr;
+                if (totalWorkingHrs > MAX_WORKING_HRS)
+                    totalWorkingHrs = totalWorkingHrs - empHr;
             }
-            Console.WriteLine("Total Wage for {0} days is :{1}", day - 1, totalWage);
+            Console.WriteLine("Total Wage for {0} days and Hrs:{1} is:{2}", (day - 1),(totalWorkingHrs),totalWage);
         }
     }
     

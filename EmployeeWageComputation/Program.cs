@@ -15,19 +15,21 @@
             int employeeInput = random.Next(0, 3);// 0 or 1 or 2
 
             Console.WriteLine("Random value:{0}", employeeInput);
-            if (employeeInput == FULL_TIME)
+            switch (employeeInput)
             {
-                Console.WriteLine("FullTime Employee Is Present");
-                empHr = 8;
-            }
-            else if (employeeInput== PART_TIME)
-            {
-                Console.WriteLine("PartTime Employee Is Present");
-                empHr = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee Is Not Present");
+                case FULL_TIME:
+                    //code block
+                    Console.WriteLine("FullTime Employee Is Present");
+                    empHr = 8;
+                    break;
+                case PART_TIME:
+                    //code block
+                    Console.WriteLine("PartTime Employee Is Present");
+                    empHr = 4;
+                    break;
+                default:
+                    Console.WriteLine("Employee Is Not Present");
+                    break;          
             }
             empWage = empHr*RATE_PER_HOUR;
             empWage = empHr * RATE_PER_HOUR;

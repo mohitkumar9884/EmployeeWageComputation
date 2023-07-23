@@ -4,25 +4,25 @@
     {
         private static void Main(string[] args)
         {
-            CalculateEmpWage();
-
+            Console.WriteLine("Welcome To EmployeeWageComputation");
+            CalculateEmpWage("SpaceX",27,86,29);
+            CalculateEmpWage("Reliance", 25, 84, 31);
+            CalculateEmpWage("Latentview",28,90,35);
         }
-        public static void CalculateEmpWage()
+        public static void CalculateEmpWage(string companyName,int numberOfWorkingDays,int maxWorkingHrs,int empRatePerHr)
         {
             const int FULL_TIME = 0;
             const int PART_TIME = 2;
-            const int RATE_PER_HOUR = 20;
-            const int WORKING_DAYS = 20;
-            const int MAX_WORKING_HRS = 80;
+            
             int empHr = 0;
             int empWage = 0;
             int totalWage = 0;
             int day = 1;
             int totalWorkingHrs = 0;
 
-            Console.WriteLine("Welcome To EmployeeWageComputation");
+            
             Random random = new Random();
-            while (day <= WORKING_DAYS && totalWorkingHrs <= MAX_WORKING_HRS)
+            while (day <= maxWorkingHrs && totalWorkingHrs <= maxWorkingHrs)
             {
                 int employeeInput = random.Next(0, 3);// 0 or 1 or 2
                 //Console.WriteLine("Random value:{0}", employeeInput);
@@ -43,15 +43,15 @@
                         empHr = 0;
                         break;
                 }
-                empWage = empHr * RATE_PER_HOUR;
+                empWage = empHr * empRatePerHr;
                 totalWage = totalWage + empWage;
-                Console.WriteLine("Day{0} Employee WAGE Is:{1}", day, empWage);
+                //Console.WriteLine("Day{0} Employee WAGE Is:{1}", day, empWage);
                 day++;
                 totalWorkingHrs = totalWorkingHrs + empHr;
-                if (totalWorkingHrs > MAX_WORKING_HRS)
+                if (totalWorkingHrs > maxWorkingHrs)
                     totalWorkingHrs = totalWorkingHrs - empHr;
             }
-            Console.WriteLine("Total Wage for {0} days and Hrs:{1} is:{2}", (day - 1), (totalWorkingHrs), totalWage);
+            Console.WriteLine("Total Wage for {0}: {1} days and Hrs:{2} is:{3}", companyName, (day - 1), (totalWorkingHrs), totalWage);
         }
     }
     

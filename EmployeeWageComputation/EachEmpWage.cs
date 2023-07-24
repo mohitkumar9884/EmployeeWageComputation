@@ -11,7 +11,7 @@ namespace EmployeeWageComputation
     {
         //int[] arr = new Array[5];
         //public Company[] companies;
-        public List<Company> listOfCompanies;
+        public List<Company> listOfCompanies;    
         public int numberOfCompany = 0;
 
         public EachEmpWage()
@@ -48,9 +48,10 @@ namespace EmployeeWageComputation
             int totalWage = 0;
             int day = 1;
             int totalWorkingHrs = 0;
+            List<int> listOfDailyWage = new List<int>();
 
 
-            Random random = new Random();
+        Random random = new Random();
             while (day <= company.numberOfWorkingDays && totalWorkingHrs <= company.maxWorkingHrs)
             {
                 int employeeInput = random.Next(0, 3);// 0 or 1 or 2
@@ -73,13 +74,18 @@ namespace EmployeeWageComputation
                         break;
                 }
                 empWage = empHr * company.empRatePerHr;
+                listOfDailyWage.Add(empWage);
                 totalWage = totalWage + empWage;
  
                 day++;
                 totalWorkingHrs = totalWorkingHrs + empHr;
                 if (totalWorkingHrs > company.maxWorkingHrs)
                     totalWorkingHrs = totalWorkingHrs - empHr;
-
+            }
+            Console.WriteLine("\nDaily Wage for {0} is:",company.CompanyName);
+            foreach (int wage in listOfDailyWage)
+            {
+                Console.Write(wage+" ");
             }
             //Console.WriteLine("Total Wage for {0}: {1} days and Hrs:{2} is:{3}", company.CompanyName, (day - 1), (totalWorkingHrs), totalWage);
             return totalWage;

@@ -10,29 +10,31 @@ namespace EmployeeWageComputation
     internal class EachEmpWage
     {
         //int[] arr = new Array[5];
-        public Company[] companies;
+        //public Company[] companies;
+        public List<Company> listOfCompanies;
         public int numberOfCompany = 0;
 
         public EachEmpWage()
         {
-            companies = new Company[5];
+            //companies = new Company[5];
+            listOfCompanies = new List<Company>();
         }
 
-        public void AddCompanyObjectsIntoArray(string compny, int workingDays,int ratePerHr, int workingHrs)
+        public void AddCompanyObjectsIntoArray(string compny,int workingDays, int workingHrs,int ratePerHr )
         {
             Company obj = new Company(compny, workingDays, workingHrs, ratePerHr);
-            companies[numberOfCompany] = obj;
-            numberOfCompany++;
+           // companies[numberOfCompany] = obj;
+            listOfCompanies.Add(obj);
+            //numberOfCompany++;
         }
         public void IterateOverArray()
         {
-            foreach(Company comp in companies)
-            {
-                if (comp != null)
-                {
+            foreach(Company comp in listOfCompanies)
+            {               
                     int totalwage = CalculateEmpWage(comp);
-                    comp.SetTotalWage(totalwage);
-                }
+                    comp.SetTotalWage(totalwage); 
+                    Console.WriteLine(comp.ToString());
+                    //Console.WriteLine(comp.CompanyName+"" +comp.empRatePerHr);
             }
         }
          
@@ -49,7 +51,7 @@ namespace EmployeeWageComputation
 
 
             Random random = new Random();
-            while (day <= company.maxWorkingHrs && totalWorkingHrs <= company.maxWorkingHrs)
+            while (day <= company.numberOfWorkingDays && totalWorkingHrs <= company.maxWorkingHrs)
             {
                 int employeeInput = random.Next(0, 3);// 0 or 1 or 2
                 //Console.WriteLine("Random value:{0}", employeeInput);
@@ -57,29 +59,29 @@ namespace EmployeeWageComputation
                 {
                     case FULL_TIME:
                         //code block
-                        //Console.WriteLine("FullTime Employee Is Present");
+
                         empHr = 8;
                         break;
                     case PART_TIME:
                         //code block
-                        //Console.WriteLine("PartTime Employee Is Present");
+
                         empHr = 4;
                         break;
                     default:
-                        //Console.WriteLine("Employee Is Not Present");
+ 
                         empHr = 0;
                         break;
                 }
                 empWage = empHr * company.empRatePerHr;
                 totalWage = totalWage + empWage;
-                //Console.WriteLine("Day{0} Employee WAGE Is:{1}", day, empWage);
+ 
                 day++;
                 totalWorkingHrs = totalWorkingHrs + empHr;
                 if (totalWorkingHrs > company.maxWorkingHrs)
                     totalWorkingHrs = totalWorkingHrs - empHr;
 
             }
-            Console.WriteLine("Total Wage for {0}: {1} days and Hrs:{2} is:{3}", company.CompanyName, (day - 1), (totalWorkingHrs), totalWage);
+            //Console.WriteLine("Total Wage for {0}: {1} days and Hrs:{2} is:{3}", company.CompanyName, (day - 1), (totalWorkingHrs), totalWage);
             return totalWage;
         }
     }

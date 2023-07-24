@@ -13,6 +13,7 @@ namespace EmployeeWageComputation
 
         public Company(string compny,int workingDays,int workingHrs,int ratePerHr)
         {
+
             CompanyName = compny;
             numberOfWorkingDays = workingDays;
             maxWorkingHrs = workingHrs;
@@ -21,6 +22,10 @@ namespace EmployeeWageComputation
         public void SetTotalWage(int total)
         {
             totalWage = total; 
+        }
+        public override string ToString()
+        {
+            return $"Company:{CompanyName} NumbOfWorkingDays:{numberOfWorkingDays} WorkingHrs:{maxWorkingHrs} ratePerHr:{empRatePerHr},totalWage:{totalWage}";
         }
     }
 }

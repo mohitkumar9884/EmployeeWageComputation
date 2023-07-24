@@ -25,7 +25,7 @@ namespace EmployeeWageComputation
         }
         public override string ToString()
         {
-            return $"Company:{CompanyName} NumbOfWorkingDays:{numberOfWorkingDays} WorkingHrs:{maxWorkingHrs} ratePerHr:{empRatePerHr},totalWage:{totalWage}";
+            return $"\nCompany:{CompanyName} NumbOfWorkingDays:{numberOfWorkingDays} WorkingHrs:{maxWorkingHrs} ratePerHr:{empRatePerHr},totalWage:{totalWage}";
         }
     }
 }

@@ -11,13 +11,15 @@ namespace EmployeeWageComputation
     {
         //int[] arr = new Array[5];
         //public Company[] companies;
-        public List<Company> listOfCompanies;    
+        public List<Company> listOfCompanies;   
+        public Dictionary<string,int>keyValues;
         public int numberOfCompany = 0;
 
         public EachEmpWage()
         {
             //companies = new Company[5];
             listOfCompanies = new List<Company>();
+            keyValues = new Dictionary<string,int>();
         }
 
         public void AddCompanyObjectsIntoArray(string compny,int workingDays, int workingHrs,int ratePerHr )
@@ -25,6 +27,7 @@ namespace EmployeeWageComputation
             Company obj = new Company(compny, workingDays, workingHrs, ratePerHr);
            // companies[numberOfCompany] = obj;
             listOfCompanies.Add(obj);
+            keyValues.Add(obj.CompanyName,obj.totalWage);
             //numberOfCompany++;
         }
         public void IterateOverArray()
@@ -36,6 +39,13 @@ namespace EmployeeWageComputation
                     Console.WriteLine(comp.ToString());
                     //Console.WriteLine(comp.CompanyName+"" +comp.empRatePerHr);
             }
+        }
+        public int GetTotalWageBasedOnCompany(string companyName)
+        {
+            if(keyValues.ContainsKey(companyName))
+            return keyValues[companyName];
+            else 
+                return 0;
         }
          
         public int CalculateEmpWage(Company company)

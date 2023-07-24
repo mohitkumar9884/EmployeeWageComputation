@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    internal class EachEmpWage
+    internal class EachEmpWage:InterfaceEachEmpWage
     {
         //int[] arr = new Array[5];
         //public Company[] companies;
@@ -22,7 +22,7 @@ namespace EmployeeWageComputation
             keyValues = new Dictionary<string,int>();
         }
 
-        public void AddCompanyObjectsIntoArray(string compny,int workingDays, int workingHrs,int ratePerHr )
+        public void AddCompanyObjectsIntoArray(string compny, int workingDays, int workingHrs, int ratePerHr)
         {
             Company obj = new Company(compny, workingDays, workingHrs, ratePerHr);
            // companies[numberOfCompany] = obj;
